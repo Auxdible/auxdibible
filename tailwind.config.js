@@ -15,7 +15,8 @@ module.exports = {
       },
       fontFamily: { 
         'playfair-display': '"Playfair Display", sans-serif',
-        'montserrat': '"Montserrat", sans-serif'
+        'montserrat': '"Montserrat", sans-serif',
+        'inter': '"Inter", sans-serif'
       },
       animation: {
         themeUp: "themeUp 0.5s ease-out 1 forwards",

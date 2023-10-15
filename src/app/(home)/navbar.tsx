@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import ThemeButton from "./ThemeButton";
+import ThemeButton from "../../components/ThemeButton";
 import { UIEvent, useEffect, useState } from "react";
 
 export default function Navigation() {
@@ -26,7 +26,7 @@ export default function Navigation() {
             </div>
             
             <div className={"items-row items-baseline gap-5 font-montserrat text-3xl"}>
-            <Link href={"/read"} className={"before:underline-custom relative hover:before:scale-100"}>
+            <Link href={"/bible"} className={"before:underline-custom relative hover:before:scale-100"}>
             Bible
             </Link>
             </div>
