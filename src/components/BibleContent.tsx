@@ -2,13 +2,21 @@
 
 import { BibleResponse } from "@/types/BibleResponse";
 import { useQuery } from "react-query";
+import { useContext } from 'react';
+import BibleContext from "@/context/BibleContext";
 
 export default function BibleContent({ version, search }: { version: string, search: string }) {
 
+    const bibleContext = useContext(BibleContext);
     const { data } = useQuery(['search', search, version], async () => {
-        return await fetch(`/api/bible/${version}?search=${search}`).then(async (data) => await data.json().then((i) => i.data as BibleResponse[]));
+        return await fetch(`/api/bible/${version}?search=${search}`).then(async (data) => await data.json().then((i) => {
+            const response = i.data as BibleResponse[];
+            if (bibleContext) bibleContext.setBible({ book: response[0].book, ch: response[0].chapter });
+            return response;
+        }));
     });
     if (!data || !data[0]) return <></>;
+
     return (<>
     <header className={"mx-auto text-center my-5"}>
         <h1 className={"font-playfair-display text-6xl"}>{data[0].book.n}</h1>

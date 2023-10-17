@@ -1,4 +1,5 @@
 import Navigation from "@/app/(bible)/navbar";
+import BibleProviders from "@/components/BibleProviders";
 import Providers from "@/components/Providers"
 import '@/styles/global.scss';
 import { Metadata } from "next";
@@ -17,8 +18,10 @@ export default function BibleLayout({
     <html lang="en">
       <body className={"dark:bg-neutral-800 bg-neutral-300"}>
         <Providers>
+          <BibleProviders>
             <Navigation />
             {children}
+          </BibleProviders>
         </Providers>
       </body>
     </html>
