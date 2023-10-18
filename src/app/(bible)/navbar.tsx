@@ -6,6 +6,7 @@ import { useEffect, useState, useContext } from "react";
 import VersionSelector from "@/components/VersionSelector";
 import {BibleSearch} from "@/components/BibleSearch";
 import BibleContext from "@/context/BibleContext";
+import UserMenu from "@/components/UserMenu";
 
 export default function Navigation() {
     const [previousScrollPos, setScrollPos] = useState(0);
@@ -34,6 +35,7 @@ export default function Navigation() {
         
         <div className={"items-row px-2"}>
             <ThemeButton/>
+            <UserMenu/>
         </div>
     </section>
     <section className={`dark:bg-neutral-700 py-2 bg-neutral-400 border-b dark:border-neutral-400 border-neutral-700 w-full flex flex-row justify-center`}>
