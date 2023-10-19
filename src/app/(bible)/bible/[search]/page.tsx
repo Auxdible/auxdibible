@@ -1,5 +1,5 @@
 "use client";
-import BibleContent from "@/components/BibleContent";
+import BibleContent from "@/components/content/BibleContent";
 import { useSearchParams } from "next/navigation";
 
 

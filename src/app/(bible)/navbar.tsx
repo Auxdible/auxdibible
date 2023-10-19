@@ -42,6 +42,6 @@ export default function Navigation() {
     <BibleSearch defaultBook={bibleContext?.bible?.book} defaultCh={bibleContext?.bible?.ch}/>
     </section>
         </nav>
-    <div className={"h-36d"}></div>
+    <div className={"h-36"}></div>
     </>)
 }
