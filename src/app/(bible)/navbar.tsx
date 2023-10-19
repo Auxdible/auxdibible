@@ -4,9 +4,9 @@ import Link from "next/link";
 import ThemeButton from "../../components/ThemeButton";
 import { useEffect, useState, useContext } from "react";
 import VersionSelector from "@/components/VersionSelector";
-import {BibleSearch} from "@/components/BibleSearch";
+import {BibleSearch} from "@/components/search/BibleSearch";
 import BibleContext from "@/context/BibleContext";
-import UserMenu from "@/components/UserMenu";
+import { UserButton } from "@/components/UserButton";
 
 export default function Navigation() {
     const [previousScrollPos, setScrollPos] = useState(0);
@@ -35,13 +35,13 @@ export default function Navigation() {
         
         <div className={"items-row px-2"}>
             <ThemeButton/>
-            <UserMenu/>
+            <UserButton/>
         </div>
     </section>
     <section className={`dark:bg-neutral-700 py-2 bg-neutral-400 border-b dark:border-neutral-400 border-neutral-700 w-full flex flex-row justify-center`}>
     <BibleSearch defaultBook={bibleContext?.bible?.book} defaultCh={bibleContext?.bible?.ch}/>
     </section>
         </nav>
-    <div className={"h-32"}></div>
+    <div className={"h-36d"}></div>
     </>)
 }
