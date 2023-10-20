@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import ThemeButton from "../../components/ThemeButton";
 import { UIEvent, useEffect, useState } from "react";
-import { UserButton } from "@/components/UserButton";
+import { UserButton } from "@/components/user/UserButton";
 
 export default function Navigation() {
     const [previousScrollPos, setScrollPos] = useState(0);
@@ -35,7 +35,6 @@ export default function Navigation() {
         </div>
         <div className={"items-row px-2"}>
             <ThemeButton/>
-            <UserButton/>
         </div>
     </nav></>)
 }
