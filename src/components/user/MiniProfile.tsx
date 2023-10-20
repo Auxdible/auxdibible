@@ -12,8 +12,8 @@ export function MiniProfile({ imageURL, name, tag }: { imageURL?: string, name: 
         className={"rounded-2xl"}
         /> : <BsPerson className={"text-3xl"}/>}
         <span className={"flex flex-col gap-0"}>
-            <span className={"text-xl font-montserrat"}>{name}</span>
-            <span className={"text-base font-inter h-fit dark:text-gray-400 text-gray-700"}>{tag}</span>
+            <span className={"text-xl max-md:text-base font-montserrat"}>{name}</span>
+            <span className={"text-base max-md:text-xs font-inter h-fit dark:text-gray-400 text-gray-700"}>{tag}</span>
         </span>
     </span>
     );

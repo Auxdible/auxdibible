@@ -34,7 +34,7 @@ export default function Navigation() {
         </div>
         
         <div className={"items-row px-2 gap-2"}>
-            <UserButton/>
+            <UserButton visible={visible} />
             <ThemeButton/>
         </div>
     </section>
