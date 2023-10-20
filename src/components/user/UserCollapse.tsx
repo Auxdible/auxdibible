@@ -16,16 +16,16 @@ export function UserCollapse({ collapsed }: { collapsed: boolean }) {
                     {session?.user ? 
                         <MiniProfile 
                             imageURL={session.user.image || undefined}
-                            name={session.user?.name || ""}
-                            tag={"@auxdible"}
+                            name={session.user.name || ""}
+                            tag={session.user.tag || "NO TAG FOUND"}
                         /> : 
-                        <Link className={"items-row gap-2 cursor-pointer font-inter text-2xl max-md:text-lg"} href={"/"}><BsPersonAdd/> Sign in</Link>
+                        <Link className={"items-row gap-2 cursor-pointer font-inter text-xl max-md:text-lg"} href={"/"}><BsPersonAdd/> Sign in</Link>
                     }
                 </li>
                 <li>
                     <span>
                         {session?.user ? 
-                            <span className={"items-row gap-2 cursor-pointer font-inter text-2xl max-md:text-lg border-b-2 py-2 dark:border-neutral-600 border-neutral-500"} onClick={() => signOut({ redirect: true, callbackUrl: '/' })}>
+                            <span className={"items-row gap-2 cursor-pointer font-inter text-xl max-md:text-lg border-b-2 py-2 dark:border-neutral-600 border-neutral-500"} onClick={() => signOut({ redirect: true, callbackUrl: '/' })}>
                                 <BsDoorOpen/> Sign out
                             </span> : ""
                         }

@@ -3,10 +3,13 @@ import NextAuth from "next-auth"
 import Credentials from "next-auth/providers/credentials"
 import Google from "next-auth/providers/google";
 import bcrypt from 'bcrypt';
+import { PrismaAdapter } from "@auth/prisma-adapter";
+
 
 const saltRounds = 10;
 
 export const handler = NextAuth({
+  adapter: PrismaAdapter(prisma),
   providers: [
     Credentials({
         id: "credentials",
@@ -17,32 +20,38 @@ export const handler = NextAuth({
         },
         authorize(credentials, req) {
             if (!credentials || !credentials.password || !credentials.username) return null;
-            return prisma.users.findFirstOrThrow({ where: { tag: credentials?.username } })
-            .then((i) => {
-                if (i.password) {
-                    return bcrypt.compare(credentials.password, i.password)
-                        .then((res) => res ? i : null)
-                        .catch(() => null);
-                }
-                return null;
-            }).catch(() => null);
+            return null;
         },
      }),
-    Google({ 
+    Google({
+        id: "google",
+        name: "Google",
         clientId: process.env.GOOGLE_CLIENT_ID || "",
         clientSecret: process.env.GOOGLE_CLIENT_SECRET || "",
         authorization: { params: { scope: "openid email profile" } },
+        idToken: true,
         profile(profile) {
-            console.log(profile);
-            return {
-                id: profile.at_hash,
-                name: profile.name,
-                email: profile.email,
-                image: profile.picture
-            }
+        return {
+            id: profile.sub,
+            name: profile.name,
+            email: profile.email,
+            image: profile.picture,
         }
+        },
     }),
-
+    
   ],
+  callbacks: {
+    async session({ session, user }) {
+        session.user.id = user.id;
+        if (!session.user.tag) {
+            const autoTag = session.user.name?.toLowerCase().replaceAll(' ', '.');
+            session.user.tag = autoTag;
+            await prisma.user.update({ where: { id: user.id }, data: { tag: autoTag }})
+        }
+        return session
+      }
+  },
+  
 })
 export {handler as GET, handler as POST}
