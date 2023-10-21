@@ -19,7 +19,7 @@ export function UserCollapse({ collapsed }: { collapsed: boolean }) {
                             name={session.user.name || ""}
                             tag={session.user.tag || "NO TAG FOUND"}
                         /> : 
-                        <Link className={"items-row gap-2 cursor-pointer font-inter text-xl max-md:text-lg"} href={"/"}><BsPersonAdd/> Sign in</Link>
+                        <Link className={"items-row gap-2 cursor-pointer font-inter text-xl max-md:text-lg"} href={"/auth"}><BsPersonAdd/> Sign in</Link>
                     }
                 </li>
                 <li>

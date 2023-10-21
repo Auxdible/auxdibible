@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { BsCode, BsGear, BsGithub, BsLink, BsPhone } from 'react-icons/bs';
 export default function Home() {
   return (
-    <main className="">
+    <main>
       <header className={"flex flex-col gap-2 min-h-screen justify-center"}>
         <div className={"flex flex-col items-center w-fit mx-auto text-center"}>
           <h1 className={"font-playfair-display text-6xl md:items-row max-md:flex-col flex"}>
