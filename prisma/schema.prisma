@@ -36,15 +36,32 @@ model Session {
   @@map("sessions")
 }
 
+enum HighlightColor {
+  RED
+  ORANGE
+  GREEN
+  PINK
+  BLUE
+  YELLOW
+  PURPLE
+  CYAN
+}
+
+type Highlight {
+  passage String         @default("1.1.1")
+  color   HighlightColor @default(YELLOW)
+}
+
 model User {
-  id            String    @id @default(auto()) @map("_id") @db.ObjectId
+  id            String      @id @default(auto()) @map("_id") @db.ObjectId
   name          String?
-  email         String?   @unique
+  email         String?     @unique
   emailVerified DateTime?
   image         String?
   Account       Account[]
   Session       Session[]
-  tag           String?   @unique
+  tag           String?     @unique
+  highlights    Highlight[]
 
   @@map("users")
 }

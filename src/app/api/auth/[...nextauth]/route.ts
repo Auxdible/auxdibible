@@ -1,5 +1,5 @@
 import prisma from "@/lib/prisma";
-import NextAuth from "next-auth"
+import NextAuth, { AuthOptions } from "next-auth"
 import Credentials from "next-auth/providers/credentials"
 import Google from "next-auth/providers/google";
 import bcrypt from 'bcrypt';
@@ -7,22 +7,9 @@ import { PrismaAdapter } from "@auth/prisma-adapter";
 
 
 const saltRounds = 10;
-
-export const handler = NextAuth({
+export const authOptions: AuthOptions = {
   adapter: PrismaAdapter(prisma),
   providers: [
-    Credentials({
-        id: "credentials",
-        name: "Auxdibible Account",
-        credentials: {
-            username: { label: "Username", type: "text", placeholder: "jsmith40" },
-            password: { label: "Password", type: "password" }
-        },
-        authorize(credentials, req) {
-            if (!credentials || !credentials.password || !credentials.username) return null;
-            return null;
-        },
-     }),
     Google({
         id: "google",
         name: "Google",
@@ -71,5 +58,6 @@ export const handler = NextAuth({
     signIn: '/auth',
     signOut: '/auth',
   }
-})
+};
+export const handler = NextAuth(authOptions);
 export {handler as GET, handler as POST}

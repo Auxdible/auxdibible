@@ -23,7 +23,8 @@ module.exports = {
         themeDown: "themeDown 0.5s ease-out 1 forwards",
         theme2Up: "theme2Up 0.5s ease-out 1 forwards",
         theme2Down: "theme2Down 0.5s ease-out 1 forwards",
-        pulse: "pulse 0.75s cubic-bezier(0.4, 0, 0.6, 1) infinite"
+        pulse: "pulse 0.75s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        scaleUp: "scaleUp 0.1s ease-out 1 forwards"
       }
     },
   },

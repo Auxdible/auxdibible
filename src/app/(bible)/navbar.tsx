@@ -21,7 +21,7 @@ export default function Navigation() {
         setScrollPos(window.pageYOffset);
         setVisible(visible);
     }
-    return (<><nav className={`fixed w-full transition-transform${!visible ? " -translate-y-full" : ""}`}>
+    return (<><nav className={`fixed z-10 w-full transition-transform${!visible ? " -translate-y-full" : ""}`}>
         <section className={`dark:bg-neutral-700 bg-neutral-400 border-b dark:border-neutral-400 border-neutral-700 w-full flex flex-row justify-between`}>
         <div className={"flex gap-6 items-center"}>
             <div>

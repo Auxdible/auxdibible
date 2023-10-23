@@ -1,11 +1,9 @@
 import books from '@/bible/key_english.json';
 import { NextRequest, NextResponse } from 'next/server';
 import findBook from '@/lib/findBook';
+import { Bible } from '@/types/Bible';
 
 const versions = ['kjv', 'bbe'];
-interface Bible {
-    readonly bible: { field: [number, number, number, number, string] }[]
-}
 export async function GET(req: NextRequest, { params }: { params: { version: string } }) {
     const { version } = params;
     if (versions.indexOf(version.toLowerCase()) == -1) 

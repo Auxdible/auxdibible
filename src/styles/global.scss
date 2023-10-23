@@ -12,6 +12,17 @@
         @apply absolute block w-full h-[1px] bottom-0 left-0 dark:bg-white bg-black scale-0 transition-transform;
         content: "";
     }
+    .link-hover {
+        @apply cursor-pointer hover:text-cyan-600 hover:dark:text-cyan-400 transition-all;
+    }
+}
+@keyframes scaleUp {
+    0% {
+        scale: 0;
+    }
+    100% {
+        scale: 1;
+    }
 }
 @keyframes themeUp {
     0% {
