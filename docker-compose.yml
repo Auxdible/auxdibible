@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  auxdibible:
+    container_name: auxdibible
+    build:
+      context: ./
+      dockerfile: Dockerfile
+      args:
+        MONGO_URI: ${MONGO_URI}
+        GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID}
+        GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET}
+        NEXTAUTH_URL: ${NEXTAUTH_URL}
+        NEXTAUTH_SECRET: ${NEXTAUTH_SECRET}
+        NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL}
+    env_file:
+      - .env
+    volumes:
+      - ./src:/app/src
+      - ./public:/app/public
+    restart: always
+    ports:
+      - 3000:3000
+    networks:
+      - auxdibible
+networks:
+  auxdibible:
+    external: true
