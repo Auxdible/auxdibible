@@ -4,7 +4,7 @@ import { BibleResponse } from "@/types/BibleResponse";
 import { useQuery } from "react-query";
 import { useContext, useEffect, useRef, useState } from 'react';
 import BibleContext from "@/context/BibleContext";
-import { ContentLoading } from "./ContentLoading";
+import { ContentLoading } from "../ContentLoading";
 import { ContentNotFound } from "./ContentNotFound";
 import { VerseContextMenu } from "./VerseContextMenu";
 import { Highlight } from "@prisma/client";
@@ -64,8 +64,8 @@ export default function BibleContent({ version, search }: { version: string, sea
         </>
         :
         <>
-        <ContentLoading className={"text-6xl"} spans={1}/>
-        <ContentLoading className={"text-6xl"} spans={1} avgLength={5}/>
+        <ContentLoading className={"text-6xl items-center mx-auto"} spans={1}/>
+        <ContentLoading className={"text-6xl items-center mx-auto"} spans={1} avgLength={5}/>
         </>
         }
     </header>
@@ -74,14 +74,14 @@ export default function BibleContent({ version, search }: { version: string, sea
     data.map((i) => {
         const highlight = highlights?.find(h => h.passage == `${i.book.b}.${i.chapter}.${i.verse}`);
         return (<span key={`${i.book.b}.${i.chapter}.${i.verse}`} aria-label={"verse"} className={`cursor-pointer first-of-type:rounded-l-xl 
-        last-of-type:rounded-r-xl transition-all ${selectedVerse?.verse == i.verse ? "dark:bg-neutral-800 bg-gray-100" : ""} 
-        ${highlight ? `dark:bg-${highlightColors[highlight.color].dark} bg-${highlightColors[highlight.color].light}` : ""}`} onClick={() => setSelectedVerse(i)}>
+        last-of-type:rounded-r-xl transition-all 
+        ${highlight ? `dark:bg-${highlightColors[highlight.color].dark} bg-${highlightColors[highlight.color].light}` : `${selectedVerse?.verse == i.verse ? "dark:bg-neutral-800 bg-gray-100" : ""}`}`} onClick={() => setSelectedVerse(i)}>
             <span aria-label={"verse"} className={"text-xs h-full font-bold"}> {i.verse} </span>
             <span aria-label={"verse"} className={"font-inter"} dangerouslySetInnerHTML={{ __html: i.content + " " }}></span>
         </span>)
     }
     ) :
-    <ContentLoading spans={10}/>}
+    <ContentLoading spans={10} className={"mx-auto"}/>}
     
     </section>
     </div>);

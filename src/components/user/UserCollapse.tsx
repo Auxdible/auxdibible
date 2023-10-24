@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ElementType, PropsWithRef } from "react";
 import { MiniProfile } from "./MiniProfile";
 import { BsDoorOpen, BsGear, BsPersonAdd } from "react-icons/bs";
+import { UserSearch } from "./UserSearch";
 
 export function UserCollapse({ collapsed }: { collapsed: boolean }) {
     const { data: session } = useSession();
@@ -30,6 +31,9 @@ export function UserCollapse({ collapsed }: { collapsed: boolean }) {
                             </span> : ""
                         }
                     </span>
+                </li>
+                <li>
+                    <UserSearch/>
                 </li>
             </ul>
         </div>
