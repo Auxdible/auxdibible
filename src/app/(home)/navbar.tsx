@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import ThemeButton from "../../components/ThemeButton";
+import ThemeButton from "../../components/navbar/ThemeButton";
 import { UIEvent, useEffect, useState } from "react";
 import { UserButton } from "@/components/user/UserButton";
 

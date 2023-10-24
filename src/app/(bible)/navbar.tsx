@@ -1,10 +1,10 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import ThemeButton from "../../components/ThemeButton";
+import ThemeButton from "../../components/navbar/ThemeButton";
 import { useEffect, useState, useContext } from "react";
-import VersionSelector from "@/components/VersionSelector";
-import {BibleSearch} from "@/components/search/BibleSearch";
+import VersionSelector from "@/components/navbar/VersionSelector";
+import {BibleSearch} from "@/components/navbar/search/BibleSearch";
 import BibleContext from "@/context/BibleContext";
 import { UserButton } from "@/components/user/UserButton";
 
